@@ -7,8 +7,6 @@ on:
         required: true
   push:
     
-    
-
 jobs:
   merge_json_job:
     runs-on: ubuntu-latest
@@ -19,13 +17,13 @@ jobs:
         with:
           token: ${{ secrets.TEST_ACTION_GH_PAT }}  # TODO: Change this to org secret
           path: './json-temp/'  
-          repository: 'teamkfinteg/json-test-data'  # TODO: Make this an input variable, get default from github context
+          repository: 'teamkfinteg/json-test-data'  # TODO: Update to kf org
 
       - name: Merge input-file into library-file json data
         id: merge-json
-        uses: teamkfinteg/hello-world-javascript-action@v0.1.7
+        uses: teamkfinteg/hello-world-javascript-action@v0.1.8 # TODO: Update to kf org when transfered
         with:
-          input-file: integ-store-types.json # TODO: Make this an input variable
+          input-file: integ-store-types.json
           library-file: ./json-temp/store-types/store-types.json
 
       - uses: Keyfactor/add-and-commit@v7.5.0
@@ -33,7 +31,7 @@ jobs:
           author_name: 'fiddlermikey'
           author_email: 'fiddlermikey@gmail.com'
           branch: 'main'
-          message: ${{ format('Merged the {0} stores-type.json data into master library', github.event.repository.name) }}
+          message: ${{ format('Merged the {0} stores-type.json', github.event.repository.name) }}
           add: 'store-types/store-types.json'
           cwd: './json-temp/'
 
