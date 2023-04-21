@@ -7,11 +7,18 @@ jobs:
     name: Merge json files
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.token }}
+          path: './store-types-temp/' # TODO: Make this an input variable
+          repository: 'teamkfinteg/json-test-data' # # TODO: Find the gh context variable
+      
+
       - name: Merge input-file into library-file json data
         id: merge-json
         uses: teamkfinteg/hello-world-javascript-action@v0.1.6
         with:
           input-file: integ-store-types.json
-          library-file: master-store-types.json
+          library-file: ./store-types-temp/store-types.json
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
