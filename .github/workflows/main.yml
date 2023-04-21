@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Merge json files
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
 # Add Auth later          token: ${{ secrets.token }}
           path: './store-types-temp/'  # TODO: Make this an input variable
-          repository: 'teamkfinteg/json-test-data'  # TODO: Find the gh context variable
+          repository: 'teamkfinteg/json-test-data'  # TODO: Make this an input variable
 
       - name: Merge input-file into library-file json data
         id: merge-json
