@@ -1,0 +1,8 @@
+{
+  "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
+  "name": "Remote File",
+  "about": {
+    "orchestrator": {
+    }
+  }
+}

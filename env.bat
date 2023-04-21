@@ -1,0 +1,3 @@
+@echo off
+REM TEST_ACTION_GH_PAT
+set GITHUB_AUTH_TOKEN=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
