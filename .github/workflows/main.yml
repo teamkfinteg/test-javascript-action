@@ -27,6 +27,6 @@ jobs:
         uses: teamkfinteg/hello-world-javascript-action@v0.1.6
         with:
           input-file: integ-store-types.json
-          library-file: ./json-test-data/store-types-temp/store-types.json
+          library-file: ./test-javascript-action/store-types-temp/store-types.json
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
