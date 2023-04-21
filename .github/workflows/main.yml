@@ -17,16 +17,16 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with:
-# Add Auth later          token: ${{ secrets.token }}
-          path: './store-types-temp/'  # TODO: Make this an input variable
-          repository: 'teamkfinteg/json-test-data'  # TODO: Make this an input variable
+          token: ${{ secrets.TEST_ACTION_GH_PAT }}
+          path: './json-temp/'  
+          repository: 'teamkfinteg/json-test-data'  # TODO: Make this an input variable, get default from github context
 
       - name: Merge input-file into library-file json data
         id: merge-json
         uses: teamkfinteg/hello-world-javascript-action@v0.1.6
         with:
           input-file: integ-store-types.json
-          library-file: ./store-types-temp/store-types/store-types.json
+          library-file: ./json-temp/store-types/store-types.json
 
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
