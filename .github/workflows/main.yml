@@ -1,18 +1,17 @@
+name: Test JSON Merge
 on: [push, workflow_dispatch]
 
 jobs:
-  hello_world_job:
+  merge_json_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Merge json files
     steps:
       - uses: actions/checkout@v2
-      - name: Hello world action step
-        id: hello
-        uses: teamkfinteg/hello-world-javascript-action@v0.1.5
+      - name: Merge input-file into library-file json data
+        id: merge-json
+        uses: teamkfinteg/hello-world-javascript-action@v0.1.6
         with:
-          who-to-greet: 'Mona the Octocat'
           input-file: integ-store-types.json
           library-file: master-store-types.json
-      # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
